@@ -74,15 +74,15 @@ painterly fantasy illustration, rich detail
 
 **Descibe tu imagen ideal**
 
-![]("https://github.com/tristandelrosal/SD_webui/blob/main/screenshots/Captura%20de%20pantalla%202025-02-18%20152203.png?raw=true")
+![Principal](screenshots\captura1.png)
 
 **Imagen generada con éxito**
 
-![]("https://github.com/tristandelrosal/SD_webui/blob/main/screenshots/Captura%20de%20pantalla%202025-02-18%20152652.png?raw=true")
+![Imagen generada](screenshots\captura2.png)
 
 **Historial de generaciones**
 
-![]("https://github.com/tristandelrosal/SD_webui/blob/main/screenshots/Captura%20de%20pantalla%202025-02-18%20152705.png?raw=true")
+![Historial de generaciones](screenshots\captura3.png)
 
 
 ## Notas adicionales
