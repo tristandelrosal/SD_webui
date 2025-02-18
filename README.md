@@ -7,9 +7,9 @@ Natalie Pilkington González
 
 # Streamlit App - Generación de Imágenes con Stable Diffusion
 
-## Descripción
-
 ![](https://github.com/tristandelrosal/SD_webui/blob/main/img/placeholder.png?raw=true)
+
+## Descripción
 
 Esta aplicación desarrollada en **Streamlit** se conecta con la **API de Stable Diffusion Web UI** para generar imágenes a partir de descripciones en lenguaje natural. 
 Utiliza el modelo "**Realistic Vision V6.0 B1**" de **Civit.ai**, optimizado mediante **prompt engineering** para crear imágenes detalladas y realistas.
