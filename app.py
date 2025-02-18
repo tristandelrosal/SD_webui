@@ -68,13 +68,14 @@ def load_config() -> Dict[Any, Any]:
             return json.load(f)
     except FileNotFoundError:
         return {
-            "styles": {
-                "Realista": "realistic, highly detailed, 8k uhd, professional photography",
-                "Artístico": "artistic, painterly style, vibrant colors",
-                "Anime": "anime style, manga, detailed anime illustration",
-                "3D": "3D render, octane render, highly detailed"
-            },
-            "default_negative_prompt": "ugly, deformed, noisy, blurry, low quality"
+            "default_negative_prompt": "ugly, deformed, noisy, blurry, low quality, cartoon, flat shading, watermark, text, logo, duplicates, out of frame",
+            "prompts": {
+                "Pueblos": "fantasy, medieval, village, town, city, architecture, buildings, houses, streets, market, people, shops, tavern, inn, castle, church, square, fountain, flowers, animals, pets, birds, sky, clouds",
+                "Mazmorras": "Dark, underground, cave, High fantasy concept art, ultra-detailed environment. Dungeons and Dragons 5e, fantasy illustration, detailed, book style",
+                "Paisajes": "landscape, oilpainting, drawn, ilustration, dungeons and dragons, detailed, nature, mountains, forest, river, lake, sky, clouds, calm, peaceful, serene, tranquil, quiet, beautiful, scenic, picturesque",
+                "Retratos": "portrait, realistic, detailed, drawn, face, barroque, oil painting, Dungeons and Dragons 5e, fantasy illustration, detailed, book style",
+                "Monstruos": "Dungeons and Dragons 5e, fantasy illustration, detailed, book style, high fantasy, dark"
+            }
         }
 
 def init_session_state():
@@ -130,7 +131,7 @@ def main():
     config = load_config()
     sd_api = StableDiffusionAPI()
     
-    st.markdown("<h1 class='title'>Generador de Imágenes con Stable Diffusion</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='title'>Generador de Imágenes para juegos de rol con Stable Diffusion</h1>", unsafe_allow_html=True)
     
     # Área principal de entrada
     col1, col2 = st.columns([2, 1])
@@ -138,11 +139,11 @@ def main():
     with col1:
         st.markdown("<h2 class='subtitle'>Describe tu imagen ideal</h2>", unsafe_allow_html=True)
         
-        # Selector de estilo
-        style = st.selectbox(
-            "Estilo de imagen",
-            list(config["styles"].keys()),
-            help="Selecciona el estilo visual que deseas para tu imagen"
+        # Selector de tipo de imagen
+        image_type = st.selectbox(
+            "Tipo de imagen",
+            list(config["prompts"].keys()),
+            help="Selecciona el tipo de imagen que deseas generar"
         )
         
         # Campo de descripción principal
@@ -172,7 +173,7 @@ def main():
                 seed = st.number_input("Seed", value=-1)
     
     with col2:
-        image_path = "img/RV.png"
+        image_path = "img/placeholder.png"
         if os.path.exists(image_path):
             st.image(image_path, use_container_width=True)
         else:
@@ -186,7 +187,7 @@ def main():
         
         with st.spinner("🔮 Generando tu obra maestra..."):
             # Construir el prompt final
-            final_prompt = f"{prompt}, {config['styles'][style]}"
+            final_prompt = f"{prompt}, {config['prompts'][image_type]}"
             
             # Generar la imagen
             image_path = sd_api.generate_image(
@@ -200,12 +201,12 @@ def main():
             if image_path:
                 # Mostrar la imagen generada
                 st.success("¡Imagen generada con éxito!")
-                st.image(image_path, caption="Imagen Generada", use_container_width=True)
+                st.image(image_path, caption="Imagen Generada", width=400)  # Ajusta el ancho de la imagen
                 
                 # Guardar en el historial
                 st.session_state.history.append({
                     "prompt": prompt,
-                    "style": style,
+                    "style": image_type,
                     "path": image_path,
                     "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
                 })
@@ -217,7 +218,7 @@ def main():
                 st.write(f"**{item['timestamp']}**")
                 st.write(f"Prompt: {item['prompt']}")
                 st.write(f"Estilo: {item['style']}")
-                st.image(item['path'], width=200)
+                st.image(item['path'], width=200)  # Ajusta el ancho de las imágenes en el historial
                 st.divider()
 
 if __name__ == "__main__":
