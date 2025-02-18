@@ -1,6 +1,8 @@
 
 @autores:
+
 Tristán Del Rosal Aguirre
+
 Natalie Pilkington González
 
 # Streamlit App - Generación de Imágenes con Stable Diffusion
