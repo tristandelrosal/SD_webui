@@ -9,6 +9,8 @@ Natalie Pilkington González
 
 ## Descripción
 
+![](https://github.com/tristandelrosal/SD_webui/blob/main/img/placeholder.png?raw=true)
+
 Esta aplicación desarrollada en **Streamlit** se conecta con la **API de Stable Diffusion Web UI** para generar imágenes a partir de descripciones en lenguaje natural. 
 Utiliza el modelo "**Realistic Vision V6.0 B1**" de **Civit.ai**, optimizado mediante **prompt engineering** para crear imágenes detalladas y realistas.
 
@@ -74,15 +76,16 @@ painterly fantasy illustration, rich detail
 
 **Descibe tu imagen ideal**
 
-![Principal](screenshots\captura1.png)
+![Principal](https://github.com/tristandelrosal/SD_webui/blob/main/screenshots/captura1.png?raw=true)
 
 **Imagen generada con éxito**
 
-![Imagen generada](screenshots\captura2.png)
+![Imagen generada](https://github.com/tristandelrosal/SD_webui/blob/main/screenshots/captura2.png?raw=true)
 
 **Historial de generaciones**
 
-![Historial de generaciones](screenshots\captura3.png)
+![Historial de generaciones](https://github.com/tristandelrosal/SD_webui/blob/main/screenshots/captura3.png?raw=true
+)
 
 
 ## Notas adicionales
